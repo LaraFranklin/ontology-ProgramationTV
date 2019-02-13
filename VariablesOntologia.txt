@@ -1,0 +1,96 @@
+AM
+AudioDescribedVersion
+Brand
+Broadcast
+Broadcaster
+Category
+Channel
+Clip
+DAB Digital Audio Broadcasting
+DVB Digital Video Broadcasting
+Episode
+FM
+FirstBroadcast
+Format
+Genre
+IP stream
+LocalRadio
+NationalRadio
+OriginalVersion
+Outlet
+Person
+Place
+Programme -> Brand, Clip, Episode, ProgrammeItem, Series
+ProgrammeItem > Clip, Episode
+Radio
+RegionalRadio
+Repeat
+Season
+Segment
+Series
+Service
+ShortenedVersion
+SignLanguage
+Subject
+Subtitle
+TV
+Version
+Web
+
+
+
+
+Properties
+actor ->programme
+anchor ->reportero que coordina un programa domain->programme
+aspect ratio
+author
+broadcast  domain->season
+broadcast of  domain->broadcast
+broadcast on 
+broadcaster
+category  subproperty->format, genre, person, place, subject
+channel
+clip
+commentator
+credit  subproperty->actor, anchor, author, commentator, director, executive_producer, news_reader, participant, performer, producer
+director
+duration
+episode
+executive producer  domain->programme
+format   domain ->programme
+frequency  domain->Channel
+genre  domain->programme  raange->genre
+location  domain->service
+long synopsis
+masterbrand  domain->programme
+medium synopsis
+microsite  domain->programme
+news reader
+outlet
+parent series  domain->series
+parent service
+participant
+performer
+person  domain->programme  subproperty->category
+place
+position
+producer
+schedule date  domain->broadcast
+series range->series
+service domain->programme 
+short synopsis
+sound format
+subject
+subtitle language
+synopsis  domain->programme
+text  domain->subtitle
+time
+track
+version
+
+
+
+
+
+ 
