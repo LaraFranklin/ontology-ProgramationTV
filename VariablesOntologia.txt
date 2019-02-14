@@ -91,6 +91,25 @@ version
 
 
 
+Ontologia Programa de Television
+-Informacion del canal
+name
+direction
+phone
+web page
+description
+
+
+-Programa
+Type: movie, entertainment, entretenimiento, celebrity, notice
+schedule = horario
+type of public
+description
+
+-Destacados
+description
+schedule and country abbreviation  MEX: 19:00
+
 
 
  
