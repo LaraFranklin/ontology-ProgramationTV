@@ -1,0 +1,622 @@
+Prefix(:=<http://purl.org/NET/c4dm/timeline.owl#>)
+Prefix(dc:=<http://purl.org/dc/elements/1.1/>)
+Prefix(vs:=<http://www.w3.org/2003/06/sw-vocab-status/ns#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(daml:=<http://www.daml.org/2001/03/daml+oil#>)
+Prefix(foaf:=<http://xmlns.com/foaf/0.1/>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(time:=<http://www.w3.org/2006/time#>)
+Prefix(dcterms:=<http://purl.org/dc/terms/>)
+
+
+Ontology(<http://purl.org/NET/c4dm/timeline.owl>
+Import(<http://www.w3.org/2006/time>)
+Import(<http://www.w3.org/2006/time-entry>)
+Annotation(rdfs:comment "
+    	Extends owl-time ontology (http://www.w3.org/2006/time) with  
+	support for several timelines, acting as a backbone to adress 
+	time interval/instants. 
+
+	Mainly designed with a multimedia use-case in mind.
+
+	Copyright (c) Yves Raimond, Samer Abdallah, Centre for Digital Music, Queen Mary, University of London
+	")
+Annotation(rdfs:label "The Timeline ontology")
+
+Declaration(Class(:AbstractInstant))
+Declaration(Class(:AbstractInterval))
+Declaration(Class(:AbstractTimeLine))
+Declaration(Class(:ContinuousTimeLine))
+Declaration(Class(:DiscreteInstant))
+Declaration(Class(:DiscreteInterval))
+Declaration(Class(:DiscreteTimeLine))
+Declaration(Class(:Instant))
+Declaration(Class(:Interval))
+Declaration(Class(:OriginMap))
+Declaration(Class(:PhysicalTimeLine))
+Declaration(Class(:RelativeInstant))
+Declaration(Class(:RelativeInterval))
+Declaration(Class(:RelativeTimeLine))
+Declaration(Class(:ShiftMap))
+Declaration(Class(:TimeLine))
+Declaration(Class(:TimeLineMap))
+Declaration(Class(:UTInstant))
+Declaration(Class(:UTInterval))
+Declaration(Class(:UniformSamplingMap))
+Declaration(Class(:UniformSamplingWindowingMap))
+Declaration(Class(:UniformWindowingMap))
+Declaration(Class(foaf:Person))
+Declaration(ObjectProperty(:after))
+Declaration(ObjectProperty(:before))
+Declaration(ObjectProperty(:contains))
+Declaration(ObjectProperty(:domainTimeLine))
+Declaration(ObjectProperty(:during))
+Declaration(ObjectProperty(:equals))
+Declaration(ObjectProperty(:finishedBy))
+Declaration(ObjectProperty(:finishes))
+Declaration(ObjectProperty(:meets))
+Declaration(ObjectProperty(:metBy))
+Declaration(ObjectProperty(:onTimeLine))
+Declaration(ObjectProperty(:overlappedBy))
+Declaration(ObjectProperty(:overlaps))
+Declaration(ObjectProperty(:rangeTimeLine))
+Declaration(ObjectProperty(:startedBy))
+Declaration(ObjectProperty(:starts))
+Declaration(ObjectProperty(:timeline))
+Declaration(ObjectProperty(foaf:maker))
+Declaration(DataProperty(:at))
+Declaration(DataProperty(:atDate))
+Declaration(DataProperty(:atDateTime))
+Declaration(DataProperty(:atDuration))
+Declaration(DataProperty(:atInt))
+Declaration(DataProperty(:atReal))
+Declaration(DataProperty(:atYear))
+Declaration(DataProperty(:atYearMonth))
+Declaration(DataProperty(:beginsAt))
+Declaration(DataProperty(:beginsAtDateTime))
+Declaration(DataProperty(:beginsAtDuration))
+Declaration(DataProperty(:beginsAtInt))
+Declaration(DataProperty(:delay))
+Declaration(DataProperty(:duration))
+Declaration(DataProperty(:durationInt))
+Declaration(DataProperty(:durationXSD))
+Declaration(DataProperty(:end))
+Declaration(DataProperty(:endsAt))
+Declaration(DataProperty(:endsAtDateTime))
+Declaration(DataProperty(:endsAtDuration))
+Declaration(DataProperty(:endsAtInt))
+Declaration(DataProperty(:hopSize))
+Declaration(DataProperty(:origin))
+Declaration(DataProperty(:sampleRate))
+Declaration(DataProperty(:start))
+Declaration(DataProperty(:windowLength))
+Declaration(DataProperty(dc:description))
+Declaration(DataProperty(dc:title))
+Declaration(NamedIndividual(<http://moustaki.org/foaf.rdf#moustaki>))
+Declaration(NamedIndividual(<http://purl.org/NET/c4dm/timeline.owl>))
+Declaration(NamedIndividual(:universaltimeline))
+Declaration(AnnotationProperty(vs:term_status))
+Declaration(Datatype(xsd:date))
+Declaration(Datatype(xsd:duration))
+Declaration(Datatype(xsd:gYear))
+Declaration(Datatype(xsd:gYearMonth))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :after (:after)
+
+EquivalentObjectProperties(:after time:intervalAfter)
+
+# Object Property: :before (:before)
+
+EquivalentObjectProperties(:before time:intervalBefore)
+
+# Object Property: :contains (:contains)
+
+EquivalentObjectProperties(:contains time:intervalContains)
+
+# Object Property: :domainTimeLine (domain timeline)
+
+AnnotationAssertion(rdfs:comment :domainTimeLine "associates a timeline map to its domain timeline")
+AnnotationAssertion(rdfs:label :domainTimeLine "domain timeline")
+AnnotationAssertion(vs:term_status :domainTimeLine "stable")
+FunctionalObjectProperty(:domainTimeLine)
+ObjectPropertyDomain(:domainTimeLine :TimeLineMap)
+ObjectPropertyRange(:domainTimeLine :TimeLine)
+
+# Object Property: :during (:during)
+
+EquivalentObjectProperties(:during time:intervalDuring)
+
+# Object Property: :equals (:equals)
+
+EquivalentObjectProperties(:equals time:intervalEquals)
+
+# Object Property: :finishedBy (:finishedBy)
+
+EquivalentObjectProperties(:finishedBy time:intervalFinishedBy)
+
+# Object Property: :finishes (:finishes)
+
+EquivalentObjectProperties(:finishes time:intervalFinishes)
+
+# Object Property: :meets (:meets)
+
+EquivalentObjectProperties(:meets time:intervalMeets)
+
+# Object Property: :metBy (:metBy)
+
+EquivalentObjectProperties(:metBy time:intervalMetBy)
+
+# Object Property: :onTimeLine (:onTimeLine)
+
+AnnotationAssertion(vs:term_status :onTimeLine "deprecated")
+EquivalentObjectProperties(:onTimeLine :timeline)
+
+# Object Property: :overlappedBy (:overlappedBy)
+
+EquivalentObjectProperties(:overlappedBy time:intervalOverlappedBy)
+
+# Object Property: :overlaps (:overlaps)
+
+EquivalentObjectProperties(:overlaps time:intervalOverlaps)
+
+# Object Property: :rangeTimeLine (range timeline)
+
+AnnotationAssertion(rdfs:comment :rangeTimeLine "associates a timeline map to its range timeline")
+AnnotationAssertion(rdfs:label :rangeTimeLine "range timeline")
+AnnotationAssertion(vs:term_status :rangeTimeLine "stable")
+FunctionalObjectProperty(:rangeTimeLine)
+ObjectPropertyDomain(:rangeTimeLine :TimeLineMap)
+ObjectPropertyRange(:rangeTimeLine :TimeLine)
+
+# Object Property: :startedBy (:startedBy)
+
+EquivalentObjectProperties(:startedBy time:intervalStartedBy)
+
+# Object Property: :starts (:starts)
+
+EquivalentObjectProperties(:starts time:intervalStarts)
+
+# Object Property: :timeline (on timeline)
+
+AnnotationAssertion(rdfs:comment :timeline "
+	Relates an interval or an instant to the timeline on which it is defined.
+
+	The 29th of August, 2007 would be linked through this property to the universal timeline, whereas
+	\"from 2s to 5s on this particular signal\" would be defined on the signal' timeline.
+
+    ")
+AnnotationAssertion(rdfs:label :timeline "on timeline")
+AnnotationAssertion(vs:term_status :timeline "stable")
+FunctionalObjectProperty(:timeline)
+ObjectPropertyDomain(:timeline ObjectUnionOf(:Instant :Interval))
+ObjectPropertyRange(:timeline :TimeLine)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :at (at)
+
+AnnotationAssertion(rdfs:comment :at "refers to a point or an interval on the time line, through an explicit datatype")
+AnnotationAssertion(rdfs:label :at "at")
+AnnotationAssertion(vs:term_status :at "stable")
+FunctionalDataProperty(:at)
+DataPropertyDomain(:at ObjectUnionOf(:Instant :Interval))
+
+# Data Property: :atDate (at (date))
+
+AnnotationAssertion(rdfs:comment :atDate "A subproperty of :at, allowing to address a date (beginning of it for an instant, all of it for an interval)")
+AnnotationAssertion(rdfs:label :atDate "at (date)")
+AnnotationAssertion(vs:term_status :atDate "stable")
+SubDataPropertyOf(:atDate :at)
+DataPropertyRange(:atDate xsd:date)
+
+# Data Property: :atDateTime (at date/time)
+
+AnnotationAssertion(rdfs:comment :atDateTime "This property links an instant defined on the universal time line to an XSD date/time value")
+AnnotationAssertion(rdfs:label :atDateTime "at date/time")
+AnnotationAssertion(vs:term_status :atDateTime "stable")
+SubDataPropertyOf(:atDateTime :at)
+DataPropertyRange(:atDateTime xsd:dateTime)
+
+# Data Property: :atDuration (at (duration))
+
+AnnotationAssertion(rdfs:comment :atDuration "A property enabling to adress a time point P through the duration of the interval [0,P] on a continuous timeline")
+AnnotationAssertion(rdfs:label :atDuration "at (duration)")
+AnnotationAssertion(vs:term_status :atDuration "stable")
+SubDataPropertyOf(:atDuration :at)
+DataPropertyRange(:atDuration xsd:duration)
+
+# Data Property: :atInt (at (integer))
+
+AnnotationAssertion(rdfs:comment :atInt "A subproperty of :at, having as a specific range xsd:int")
+AnnotationAssertion(rdfs:label :atInt "at (integer)")
+AnnotationAssertion(vs:term_status :atInt "stable")
+SubDataPropertyOf(:atInt :at)
+DataPropertyRange(:atInt xsd:int)
+
+# Data Property: :atReal (at (real))
+
+AnnotationAssertion(rdfs:comment :atReal "subproperty of :at, having xsd:float as a range")
+AnnotationAssertion(rdfs:label :atReal "at (real)")
+AnnotationAssertion(vs:term_status :atReal "stable")
+SubDataPropertyOf(:atReal :at)
+DataPropertyRange(:atReal xsd:float)
+
+# Data Property: :atYear (at (year))
+
+AnnotationAssertion(rdfs:comment :atYear "A subproperty of :at, allowing to address a year (beginning of it for an instant, all of it for an interval)")
+AnnotationAssertion(rdfs:label :atYear "at (year)")
+AnnotationAssertion(vs:term_status :atYear "stable")
+SubDataPropertyOf(:atYear :at)
+DataPropertyRange(:atYear xsd:gYear)
+
+# Data Property: :atYearMonth (at (year/month))
+
+AnnotationAssertion(rdfs:comment :atYearMonth "A subproperty of :at, allowing to address a year/month (beginning of it for an instant, all of it for an interval)")
+AnnotationAssertion(rdfs:label :atYearMonth "at (year/month)")
+AnnotationAssertion(vs:term_status :atYearMonth "stable")
+SubDataPropertyOf(:atYearMonth :at)
+DataPropertyRange(:atYearMonth xsd:gYearMonth)
+
+# Data Property: :beginsAt (:beginsAt)
+
+AnnotationAssertion(vs:term_status :beginsAt "deprecated")
+EquivalentDataProperties(:beginsAt :start)
+
+# Data Property: :beginsAtDateTime (begins at (date/time))
+
+AnnotationAssertion(rdfs:comment :beginsAtDateTime "A subproperty of :beginsAt, allowing to address the beginning of an interval as a date/time")
+AnnotationAssertion(rdfs:label :beginsAtDateTime "begins at (date/time)")
+AnnotationAssertion(vs:term_status :beginsAtDateTime "stable")
+SubDataPropertyOf(:beginsAtDateTime :start)
+DataPropertyRange(:beginsAtDateTime xsd:dateTime)
+
+# Data Property: :beginsAtDuration (begins at (xsd:duration))
+
+AnnotationAssertion(rdfs:comment :beginsAtDuration "A property enabling to adress a start time point P of an interval [P,E] through the duration of the interval [0,P] on a continuous timeline")
+AnnotationAssertion(rdfs:label :beginsAtDuration "begins at (xsd:duration)")
+AnnotationAssertion(vs:term_status :beginsAtDuration "stable")
+SubDataPropertyOf(:beginsAtDuration :start)
+DataPropertyRange(:beginsAtDuration xsd:duration)
+
+# Data Property: :beginsAtInt (begins at (integer))
+
+AnnotationAssertion(rdfs:comment :beginsAtInt "A subproperty of :beginsAt, having xsd:int as a range")
+AnnotationAssertion(rdfs:label :beginsAtInt "begins at (integer)")
+AnnotationAssertion(vs:term_status :beginsAtInt "stable")
+SubDataPropertyOf(:beginsAtInt :start)
+DataPropertyRange(:beginsAtInt xsd:int)
+
+# Data Property: :delay (delay)
+
+AnnotationAssertion(rdfs:comment :delay "associate a shift map to a particular delay")
+AnnotationAssertion(rdfs:label :delay "delay")
+AnnotationAssertion(vs:term_status :delay "stable")
+FunctionalDataProperty(:delay)
+DataPropertyDomain(:delay :ShiftMap)
+
+# Data Property: :duration (duration)
+
+AnnotationAssertion(rdfs:comment :duration "the duration of a time interval")
+AnnotationAssertion(rdfs:label :duration "duration")
+AnnotationAssertion(vs:term_status :duration "stable")
+DataPropertyDomain(:duration :Interval)
+
+# Data Property: :durationInt (duration (integer))
+
+AnnotationAssertion(rdfs:comment :durationInt "A subproperty of :duration, having xsd:int as a range")
+AnnotationAssertion(rdfs:label :durationInt "duration (integer)")
+AnnotationAssertion(vs:term_status :durationInt "stable")
+SubDataPropertyOf(:durationInt :duration)
+DataPropertyRange(:durationInt xsd:int)
+
+# Data Property: :durationXSD (duration (xsd:duration))
+
+AnnotationAssertion(rdfs:comment :durationXSD "A subproperty of :duration, having xsd:duration as a range")
+AnnotationAssertion(rdfs:label :durationXSD "duration (xsd:duration)")
+AnnotationAssertion(vs:term_status :durationXSD "stable")
+SubDataPropertyOf(:durationXSD :duration)
+DataPropertyRange(:durationXSD xsd:duration)
+
+# Data Property: :end (ends at)
+
+AnnotationAssertion(rdfs:comment :end "refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource")
+AnnotationAssertion(rdfs:label :end "ends at")
+AnnotationAssertion(vs:term_status :end "stable")
+EquivalentDataProperties(:end :endsAt)
+DataPropertyDomain(:end :Interval)
+
+# Data Property: :endsAt (:endsAt)
+
+AnnotationAssertion(vs:term_status :endsAt "deprecated")
+
+# Data Property: :endsAtDateTime (ends at (date/time))
+
+AnnotationAssertion(rdfs:comment :endsAtDateTime "A subproperty of :endsAt, allowing to address the end of an interval as a date/time")
+AnnotationAssertion(rdfs:label :endsAtDateTime "ends at (date/time)")
+AnnotationAssertion(vs:term_status :endsAtDateTime "stable")
+SubDataPropertyOf(:endsAtDateTime :end)
+DataPropertyRange(:endsAtDateTime xsd:dateTime)
+
+# Data Property: :endsAtDuration (ends at (xsd:duration))
+
+AnnotationAssertion(rdfs:comment :endsAtDuration "A property enabling to adress an end time point P of an interval [S,P] through the duration of the interval [0,P] on a continuous timeline")
+AnnotationAssertion(rdfs:label :endsAtDuration "ends at (xsd:duration)")
+AnnotationAssertion(vs:term_status :endsAtDuration "stable")
+SubDataPropertyOf(:endsAtDuration :end)
+DataPropertyRange(:endsAtDuration xsd:duration)
+
+# Data Property: :endsAtInt (ends at (integer))
+
+AnnotationAssertion(rdfs:comment :endsAtInt "A subproperty of :endsAt, having xsd:int as a range")
+AnnotationAssertion(rdfs:label :endsAtInt "ends at (integer)")
+AnnotationAssertion(vs:term_status :endsAtInt "stable")
+SubDataPropertyOf(:endsAtInt :end)
+DataPropertyRange(:endsAtInt xsd:int)
+
+# Data Property: :hopSize (hop size)
+
+AnnotationAssertion(rdfs:comment :hopSize "hop size, associated to a uniform windowing map")
+AnnotationAssertion(rdfs:label :hopSize "hop size")
+AnnotationAssertion(vs:term_status :hopSize "stable")
+FunctionalDataProperty(:hopSize)
+DataPropertyDomain(:hopSize ObjectUnionOf(:UniformSamplingWindowingMap :UniformWindowingMap))
+DataPropertyRange(:hopSize xsd:int)
+
+# Data Property: :origin (origin)
+
+AnnotationAssertion(rdfs:comment :origin "associate an origin map to its origin on the domain physical timeline")
+AnnotationAssertion(rdfs:label :origin "origin")
+AnnotationAssertion(vs:term_status :origin "stable")
+FunctionalDataProperty(:origin)
+DataPropertyDomain(:origin :OriginMap)
+DataPropertyRange(:origin xsd:dateTime)
+
+# Data Property: :sampleRate (sample rate)
+
+AnnotationAssertion(rdfs:comment :sampleRate "associates a sample rate value to a uniform sampling map")
+AnnotationAssertion(rdfs:label :sampleRate "sample rate")
+AnnotationAssertion(vs:term_status :sampleRate "stable")
+FunctionalDataProperty(:sampleRate)
+DataPropertyDomain(:sampleRate ObjectUnionOf(:UniformSamplingMap :UniformSamplingWindowingMap))
+DataPropertyRange(:sampleRate xsd:int)
+
+# Data Property: :start (begins at)
+
+AnnotationAssertion(rdfs:comment :start "refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource")
+AnnotationAssertion(rdfs:label :start "begins at")
+AnnotationAssertion(vs:term_status :start "stable")
+DataPropertyDomain(:start :Interval)
+
+# Data Property: :windowLength (window length)
+
+AnnotationAssertion(rdfs:comment :windowLength "window length, associated to a uniform windowing map")
+AnnotationAssertion(rdfs:label :windowLength "window length")
+AnnotationAssertion(vs:term_status :windowLength "stable")
+FunctionalDataProperty(:windowLength)
+DataPropertyDomain(:windowLength ObjectUnionOf(:UniformSamplingWindowingMap :UniformWindowingMap))
+DataPropertyRange(:windowLength xsd:int)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :AbstractInstant (abstract instant)
+
+AnnotationAssertion(rdfs:comment :AbstractInstant "An instant defined on an abstract timeline")
+AnnotationAssertion(rdfs:label :AbstractInstant "abstract instant")
+AnnotationAssertion(vs:term_status :AbstractInstant "stable")
+SubClassOf(:AbstractInstant :Instant)
+
+# Class: :AbstractInterval (abstract interval)
+
+AnnotationAssertion(rdfs:comment :AbstractInterval "
+	An interval defined on an abstract time-line.
+    ")
+AnnotationAssertion(rdfs:label :AbstractInterval "abstract interval")
+AnnotationAssertion(vs:term_status :AbstractInterval "stable")
+SubClassOf(:AbstractInterval :Interval)
+
+# Class: :AbstractTimeLine (abstract timeline)
+
+AnnotationAssertion(rdfs:comment :AbstractTimeLine "
+    	Abstract time lines may be used as a backbone for Score, Works, ... 
+	This allows for TimeLine maps to relate works to a given 
+	performance (this part was played at this time).")
+AnnotationAssertion(rdfs:label :AbstractTimeLine "abstract timeline")
+AnnotationAssertion(vs:term_status :AbstractTimeLine "stable")
+SubClassOf(:AbstractTimeLine :TimeLine)
+
+# Class: :ContinuousTimeLine (continuous timeline)
+
+AnnotationAssertion(rdfs:comment :ContinuousTimeLine "A continuous timeline, like the universal one, or the one backing an analog signal")
+AnnotationAssertion(rdfs:label :ContinuousTimeLine "continuous timeline")
+AnnotationAssertion(vs:term_status :ContinuousTimeLine "stable")
+EquivalentClasses(:ContinuousTimeLine ObjectUnionOf(:PhysicalTimeLine :RelativeTimeLine))
+SubClassOf(:ContinuousTimeLine :TimeLine)
+DisjointClasses(:ContinuousTimeLine :DiscreteTimeLine)
+
+# Class: :DiscreteInstant (discrete instant)
+
+AnnotationAssertion(rdfs:comment :DiscreteInstant "An instant defined on a discrete timeline")
+AnnotationAssertion(rdfs:label :DiscreteInstant "discrete instant")
+AnnotationAssertion(vs:term_status :DiscreteInstant "stable")
+EquivalentClasses(:DiscreteInstant ObjectIntersectionOf(:Instant ObjectSomeValuesFrom(:timeline :DiscreteTimeLine)))
+SubClassOf(:DiscreteInstant DataExactCardinality(1 :atInt))
+
+# Class: :DiscreteInterval (discrete interval)
+
+AnnotationAssertion(rdfs:comment :DiscreteInterval "An interval defined on a discrete timeline, like the one backing a digital signal")
+AnnotationAssertion(rdfs:label :DiscreteInterval "discrete interval")
+AnnotationAssertion(vs:term_status :DiscreteInterval "stable")
+EquivalentClasses(:DiscreteInterval ObjectIntersectionOf(:Interval ObjectSomeValuesFrom(:timeline :DiscreteTimeLine)))
+SubClassOf(:DiscreteInterval ObjectUnionOf(ObjectIntersectionOf(ObjectExactCardinality(1 time:hasBeginning) ObjectExactCardinality(1 time:hasEnd)) ObjectIntersectionOf(DataExactCardinality(1 :beginsAtInt) DataExactCardinality(1 :durationInt)) ObjectIntersectionOf(DataExactCardinality(1 :beginsAtInt) DataExactCardinality(1 :endsAtInt))))
+
+# Class: :DiscreteTimeLine (discrete time line)
+
+AnnotationAssertion(rdfs:comment :DiscreteTimeLine "A discrete time line (like the time line backing a digital signal")
+AnnotationAssertion(rdfs:label :DiscreteTimeLine "discrete time line")
+AnnotationAssertion(vs:term_status :DiscreteTimeLine "stable")
+SubClassOf(:DiscreteTimeLine :TimeLine)
+
+# Class: :Instant (instant)
+
+AnnotationAssertion(rdfs:comment :Instant "An instant (same as in OWL-Time)")
+AnnotationAssertion(rdfs:label :Instant "instant")
+AnnotationAssertion(vs:term_status :Instant "stable")
+EquivalentClasses(:Instant time:Instant)
+
+# Class: :Interval (interval)
+
+AnnotationAssertion(rdfs:comment :Interval "An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time.")
+AnnotationAssertion(rdfs:label :Interval "interval")
+AnnotationAssertion(vs:term_status :Interval "stable")
+EquivalentClasses(:Interval time:ProperInterval)
+
+# Class: :OriginMap (origin map)
+
+AnnotationAssertion(rdfs:comment :OriginMap "A timeline map linking a physical timeline to a relative one (originating at some point on the physical timeline)")
+AnnotationAssertion(rdfs:label :OriginMap "origin map")
+AnnotationAssertion(vs:term_status :OriginMap "stable")
+SubClassOf(:OriginMap :TimeLineMap)
+SubClassOf(:OriginMap ObjectSomeValuesFrom(:domainTimeLine :PhysicalTimeLine))
+SubClassOf(:OriginMap ObjectSomeValuesFrom(:rangeTimeLine :RelativeTimeLine))
+
+# Class: :PhysicalTimeLine (physical timeline)
+
+AnnotationAssertion(rdfs:comment :PhysicalTimeLine "A \"physical\" time-line (the universal time line (UTC)) is an instance of this class. Other time zones consists in instances of this class as well, with a \"shifting\" time line map relating them to the universal time line map.")
+AnnotationAssertion(rdfs:label :PhysicalTimeLine "physical timeline")
+AnnotationAssertion(vs:term_status :PhysicalTimeLine "stable")
+SubClassOf(:PhysicalTimeLine :ContinuousTimeLine)
+DisjointClasses(:PhysicalTimeLine :RelativeTimeLine)
+
+# Class: :RelativeInstant (relative instant)
+
+AnnotationAssertion(rdfs:comment :RelativeInstant "An instant defined on a relative timeline")
+AnnotationAssertion(rdfs:label :RelativeInstant "relative instant")
+AnnotationAssertion(vs:term_status :RelativeInstant "stable")
+EquivalentClasses(:RelativeInstant ObjectIntersectionOf(:Instant ObjectSomeValuesFrom(:timeline :RelativeTimeLine)))
+SubClassOf(:RelativeInstant DataExactCardinality(1 :atDuration))
+
+# Class: :RelativeInterval (relative interval)
+
+AnnotationAssertion(rdfs:comment :RelativeInterval "an interval defined on a relative timeline")
+AnnotationAssertion(rdfs:label :RelativeInterval "relative interval")
+AnnotationAssertion(vs:term_status :RelativeInterval "stable")
+EquivalentClasses(:RelativeInterval ObjectIntersectionOf(:Interval ObjectSomeValuesFrom(:timeline :RelativeTimeLine)))
+SubClassOf(:RelativeInterval ObjectUnionOf(ObjectIntersectionOf(ObjectExactCardinality(1 time:hasBeginning) ObjectExactCardinality(1 time:hasEnd)) ObjectIntersectionOf(DataExactCardinality(1 :beginsAtDuration) DataExactCardinality(1 :durationXSD)) ObjectIntersectionOf(DataExactCardinality(1 :beginsAtDuration) DataExactCardinality(1 :endsAtDuration))))
+
+# Class: :RelativeTimeLine (relative timeline)
+
+AnnotationAssertion(rdfs:comment :RelativeTimeLine "Semi infinite time line...canonical coordinate system --> adressed through xsd:duration since the instant 0.")
+AnnotationAssertion(rdfs:label :RelativeTimeLine "relative timeline")
+AnnotationAssertion(vs:term_status :RelativeTimeLine "stable")
+SubClassOf(:RelativeTimeLine :ContinuousTimeLine)
+
+# Class: :ShiftMap (shift map)
+
+AnnotationAssertion(rdfs:comment :ShiftMap "a map just shifting one timeline to another")
+AnnotationAssertion(rdfs:label :ShiftMap "shift map")
+AnnotationAssertion(vs:term_status :ShiftMap "stable")
+SubClassOf(:ShiftMap :TimeLineMap)
+
+# Class: :TimeLine (timeline)
+
+AnnotationAssertion(rdfs:comment :TimeLine "Represents a linear and coherent piece of time -- can be either abstract (such as the one behind a score) or concrete (such as the universal time line).
+Two timelines can be mapped using timeline maps.")
+AnnotationAssertion(rdfs:label :TimeLine "timeline")
+AnnotationAssertion(vs:term_status :TimeLine "stable")
+
+# Class: :TimeLineMap (timeline map)
+
+AnnotationAssertion(rdfs:comment :TimeLineMap "Allows to map two time lines together")
+AnnotationAssertion(rdfs:label :TimeLineMap "timeline map")
+AnnotationAssertion(vs:term_status :TimeLineMap "stable")
+
+# Class: :UTInstant (instant on the universal timeline)
+
+AnnotationAssertion(rdfs:comment :UTInstant "This concept expresses that an instant defined on the universal timeline must be associated to a dateTime value")
+AnnotationAssertion(rdfs:label :UTInstant "instant on the universal timeline")
+AnnotationAssertion(vs:term_status :UTInstant "stable")
+EquivalentClasses(:UTInstant ObjectIntersectionOf(:Instant ObjectHasValue(:timeline :universaltimeline)))
+SubClassOf(:UTInstant DataExactCardinality(1 :atDateTime))
+
+# Class: :UTInterval (universal timeline interval)
+
+AnnotationAssertion(rdfs:comment :UTInterval "an interval defined on the universal time line")
+AnnotationAssertion(rdfs:label :UTInterval "universal timeline interval")
+AnnotationAssertion(vs:term_status :UTInterval "stable")
+EquivalentClasses(:UTInterval ObjectIntersectionOf(:Interval ObjectHasValue(:timeline :universaltimeline)))
+SubClassOf(:UTInterval ObjectUnionOf(ObjectIntersectionOf(ObjectExactCardinality(1 time:hasBeginning) ObjectExactCardinality(1 time:hasEnd)) ObjectIntersectionOf(DataExactCardinality(1 :beginsAtDateTime) DataExactCardinality(1 :durationXSD)) ObjectIntersectionOf(DataExactCardinality(1 :beginsAtDateTime) DataExactCardinality(1 :endsAtDateTime)) DataExactCardinality(1 :atDate) DataExactCardinality(1 :atYear) DataExactCardinality(1 :atYearMonth)))
+
+# Class: :UniformSamplingMap (uniform sampling map)
+
+AnnotationAssertion(rdfs:comment :UniformSamplingMap "Describe the relation between a continuous time-line and its sampled equivalent")
+AnnotationAssertion(rdfs:label :UniformSamplingMap "uniform sampling map")
+AnnotationAssertion(vs:term_status :UniformSamplingMap "stable")
+SubClassOf(:UniformSamplingMap :TimeLineMap)
+SubClassOf(:UniformSamplingMap ObjectSomeValuesFrom(:domainTimeLine :RelativeTimeLine))
+SubClassOf(:UniformSamplingMap ObjectSomeValuesFrom(:rangeTimeLine :DiscreteTimeLine))
+SubClassOf(:UniformSamplingMap DataExactCardinality(1 :sampleRate))
+DisjointClasses(:UniformSamplingMap :UniformSamplingWindowingMap)
+DisjointClasses(:UniformSamplingMap :UniformWindowingMap)
+
+# Class: :UniformSamplingWindowingMap (Uniform sampling and windowing map)
+
+AnnotationAssertion(rdfs:comment :UniformSamplingWindowingMap "Describes the relation between a continuous time-line, and a time-line that corresponds to its sampled and windowed equivalent")
+AnnotationAssertion(rdfs:label :UniformSamplingWindowingMap "Uniform sampling and windowing map")
+AnnotationAssertion(vs:term_status :UniformSamplingWindowingMap "stable")
+SubClassOf(:UniformSamplingWindowingMap :TimeLineMap)
+SubClassOf(:UniformSamplingWindowingMap ObjectSomeValuesFrom(:domainTimeLine :ContinuousTimeLine))
+SubClassOf(:UniformSamplingWindowingMap ObjectSomeValuesFrom(:rangeTimeLine :DiscreteTimeLine))
+SubClassOf(:UniformSamplingWindowingMap DataExactCardinality(1 :hopSize))
+SubClassOf(:UniformSamplingWindowingMap DataExactCardinality(1 :sampleRate))
+SubClassOf(:UniformSamplingWindowingMap DataExactCardinality(1 :windowLength))
+DisjointClasses(:UniformSamplingWindowingMap :UniformWindowingMap)
+
+# Class: :UniformWindowingMap (uniform windowing map)
+
+AnnotationAssertion(rdfs:comment :UniformWindowingMap "Describes the relation between a discrete time line and its windowed equivalent")
+AnnotationAssertion(rdfs:label :UniformWindowingMap "uniform windowing map")
+AnnotationAssertion(vs:term_status :UniformWindowingMap "stable")
+SubClassOf(:UniformWindowingMap :TimeLineMap)
+SubClassOf(:UniformWindowingMap ObjectSomeValuesFrom(:domainTimeLine :DiscreteTimeLine))
+SubClassOf(:UniformWindowingMap ObjectSomeValuesFrom(:rangeTimeLine :DiscreteTimeLine))
+SubClassOf(:UniformWindowingMap DataExactCardinality(1 :hopSize))
+SubClassOf(:UniformWindowingMap DataExactCardinality(1 :windowLength))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://moustaki.org/foaf.rdf#moustaki> (<http://moustaki.org/foaf.rdf#moustaki>)
+
+ClassAssertion(foaf:Person <http://moustaki.org/foaf.rdf#moustaki>)
+
+# Individual: <http://purl.org/NET/c4dm/timeline.owl> (<http://purl.org/NET/c4dm/timeline.owl>)
+
+ClassAssertion(owl:Thing <http://purl.org/NET/c4dm/timeline.owl>)
+ObjectPropertyAssertion(foaf:maker <http://purl.org/NET/c4dm/timeline.owl> <http://moustaki.org/foaf.rdf#moustaki>)
+
+# Individual: :universaltimeline (:universaltimeline)
+
+AnnotationAssertion(rdfs:comment :universaltimeline "this is the `universal' time line -- can adress time intervals on it using date/dateTime -- UTC")
+AnnotationAssertion(vs:term_status :universaltimeline "stable")
+ClassAssertion(:PhysicalTimeLine :universaltimeline)
+DataPropertyAssertion(dc:description :universaltimeline "The timeline one can addresss \"the 1st of July, 2007\"")
+DataPropertyAssertion(dc:title :universaltimeline "the universal time line")
+
+
+)

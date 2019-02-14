@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#"
+     xml:base="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:po="http://purl.org/ontology/po/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:provenance="http://www.bbc.co.uk/ontologies/provenance/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27">
+        <owl:imports rdf:resource="http://purl.org/ontology/po/1.1"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/ontology/po/microsite -->
+
+    <rdf:Description rdf:about="http://purl.org/ontology/po/microsite">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#site -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#site">
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Channel"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:label xml:lang="en">site</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/name">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Channel"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <rdf:Description rdf:about="http://purl.org/dc/elements/1.1/description">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Channel"/>
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Address -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Address">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Channel"/>
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Country -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Country">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Destacado"/>
+        <rdfs:label xml:lang="en">Country</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Phone -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Phone">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Channel"/>
+        <rdfs:label xml:lang="en">Phone</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#ProgramType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#ProgramType">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Programme"/>
+        <rdfs:label xml:lang="en">ProgramType</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#TypeOfPublic -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#TypeOfPublic">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Programme"/>
+        <rdfs:label xml:lang="en">PublicType</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2006/time-entry#hour -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time-entry#hour">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2006/time-entry#minute -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2006/time-entry#minute">
+        <rdfs:domain rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Celebrity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Celebrity">
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Destacado -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Destacado">
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Entertainment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Entertainment">
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Movie -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Movie">
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Notice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/airoal-pc/ontologies/2019/1/untitled-ontology-27#Notice">
+        <rdfs:subClassOf rdf:resource="http://purl.org/ontology/po/Programme"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+
