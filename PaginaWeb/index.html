@@ -35,7 +35,11 @@ prefix="
 			<link rel="stylesheet" href="css/owl.carousel.css">
 			<link rel="stylesheet" href="css/main.css">
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-      <script src="js/service1.js"></script>
+			<script src="js/service1.js"></script>
+			<script src="js/modal-video.js"></script>
+			<script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+			<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		</head>
 		<body typeof="po:channel" resource="#Canal">
 
@@ -92,10 +96,11 @@ prefix="
 								En la ciudad de Guayaquil, y por Televisora Nacional Compañía Anónima Telenacional C.A. 
 								En la ciudad de Quito. <span property="po:phone"> 03285258</span>.<span property="po:address"> Av. Siempre Viva</span> . Esta en funcionamiento en <span property="po:country"">Ecuador</span>
 								Puedes comunicarte a nuestro <a property="po:mailto" href="info@ecuavisa.com">correo</a>	<a property="po:page" href="https://canalwebsemantica.000webhostapp.com/index.html"></a>.
-								El director general del canal es <span property="po:manager" typeof="foaf:person">
+								El fundador y director general del canal es <span property="po:manager" typeof="foaf:person">
 									<span property="foaf:name" class="name"> </span>, este tiene <span property="foaf:age" class="age"> </span> años, tambien es conocido como
 									<span property="foaf:nick" class="nick_name"> </span>, vive en <span property="po:address" class="address"> </p>.
-								</span>
+									</span>
+									<button class="btn btn-primary" onclick="changeVideo('Y21s_UU2pGU')">Ver la historia</button>
 							</p>
 						</div>
 					</div>
@@ -103,6 +108,20 @@ prefix="
 			</section>
 			<!-- End video-sec Area -->
 			
+			<!-- Modal -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<iframe id="iframeYoutube" width="560" height="315"  src="https://www.youtube.com/embed/e80BbX05D7Y" frameborder="0" allowfullscreen></iframe> 
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<!-- Start menu Area -->
 			<section class="menu-area section-gap" id="coffee" property="po:programming" typeof="po:programming">
 				<div class="container">
@@ -129,7 +148,7 @@ prefix="
 									<p property="po:durationtime" typeof="po:durationtime"><b>Duración: </b><span property="po:hour">01</span>:<span property="po:minute">00</span></p>								
 									<p property="po:date" typeof="po:date"><b>Fecha: </b><span property="po:day">14</span><span property="po:mounth">:02:</span><span property="po:year">2019</span></p>
 									<p><b>Calificación: </b><span property="po:score">9</span></p>
-									<p><b>Tipo de programa: </b><span property="po:programtype"> Noticiero</span></p>
+									<p><b>Tipo de programa: </b><span property="po:programtype">Noticiero</span></p>
 									<p><b>Tipo de público: </b><span property="po:publictype">Bajo supervisión de un adulto</span></p>
 								</div>
 							</div>
